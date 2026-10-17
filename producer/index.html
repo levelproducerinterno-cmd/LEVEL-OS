@@ -31,6 +31,9 @@ html{scroll-behavior:smooth}
 .tab[aria-pressed=true]{background:#FAFAF8;color:#111111;border-color:#FAFAF8}
 a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid #FAFAF8;outline-offset:3px}
 @media (max-width:600px){#inicio>div:last-child{padding:110px 20px 90px !important}}
+.reels{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;-webkit-overflow-scrolling:touch}
+.reel{flex:0 0 min(340px,82vw);scroll-snap-align:start;display:flex;flex-direction:column;gap:12px}
+.reels::-webkit-scrollbar{height:6px}.reels::-webkit-scrollbar-thumb{background:#3A3A38;border-radius:3px}
 </style>
 </head>
 <body>
@@ -115,12 +118,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 <h2 style="margin: 0; font-family: 'Playfair Display', serif; font-size: clamp(34px, 4.5vw, 56px); font-weight: 400; line-height: 1.1">Contenido que se ve y se comparte</h2>
 <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #CFCFCB; max-width: 640px">Marcas personales y empresas que confiaron en nosotros para crecer en redes.</p>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 18px">
-<div style="display: flex; flex-direction: column; gap: 10px"><div style="aspect-ratio: 9 / 16; background: #1D1D1D; border: 1px solid #2A2A2A; display: flex; align-items: center; justify-content: center"><p style="margin: 0; font-size: 13px; color: #6E6E69">[Reel 1]</p></div><p style="margin: 0; font-size: 14px; color: #A8A8A2">[Marca]</p></div>
-<div style="display: flex; flex-direction: column; gap: 10px"><div style="aspect-ratio: 9 / 16; background: #1D1D1D; border: 1px solid #2A2A2A; display: flex; align-items: center; justify-content: center"><p style="margin: 0; font-size: 13px; color: #6E6E69">[Reel 2]</p></div><p style="margin: 0; font-size: 14px; color: #A8A8A2">[Marca]</p></div>
-<div style="display: flex; flex-direction: column; gap: 10px"><div style="aspect-ratio: 9 / 16; background: #1D1D1D; border: 1px solid #2A2A2A; display: flex; align-items: center; justify-content: center"><p style="margin: 0; font-size: 13px; color: #6E6E69">[Reel 3]</p></div><p style="margin: 0; font-size: 14px; color: #A8A8A2">[Marca]</p></div>
-<div style="display: flex; flex-direction: column; gap: 10px"><div style="aspect-ratio: 9 / 16; background: #1D1D1D; border: 1px solid #2A2A2A; display: flex; align-items: center; justify-content: center"><p style="margin: 0; font-size: 13px; color: #6E6E69">[Reel 4]</p></div><p style="margin: 0; font-size: 14px; color: #A8A8A2">[Marca]</p></div>
-<div style="display: flex; flex-direction: column; gap: 10px"><div style="aspect-ratio: 9 / 16; background: #1D1D1D; border: 1px solid #2A2A2A; display: flex; align-items: center; justify-content: center"><p style="margin: 0; font-size: 13px; color: #6E6E69">[Reel 5]</p></div><p style="margin: 0; font-size: 14px; color: #A8A8A2">[Marca]</p></div>
+<div class="reels">
+<div class="reel"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DbGgzb0xFXu/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:8px; margin:0; max-width:400px; min-width:300px; width:100%; padding:0"><a href="https://www.instagram.com/p/DbGgzb0xFXu/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;aspect-ratio:9/16;background:#1D1D1D;color:#A8A8A2;text-decoration:none;font-size:13px;letter-spacing:2px;text-transform:uppercase">Ver en Instagram</a></blockquote><p style="margin: 0; font-size: 15px; color: #CFCFCB"><b style="color: #FAFAF8">Califest</b> · BTS</p></div>
+<div class="reel"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DdHUv5mAUq1/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:8px; margin:0; max-width:400px; min-width:300px; width:100%; padding:0"><a href="https://www.instagram.com/p/DdHUv5mAUq1/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;aspect-ratio:9/16;background:#1D1D1D;color:#A8A8A2;text-decoration:none;font-size:13px;letter-spacing:2px;text-transform:uppercase">Ver en Instagram</a></blockquote><p style="margin: 0; font-size: 15px; color: #CFCFCB"><b style="color: #FAFAF8">Pablo Galván</b> · Marca personal</p></div>
+<div class="reel"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DdFgSllvHeu/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:8px; margin:0; max-width:400px; min-width:300px; width:100%; padding:0"><a href="https://www.instagram.com/p/DdFgSllvHeu/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;aspect-ratio:9/16;background:#1D1D1D;color:#A8A8A2;text-decoration:none;font-size:13px;letter-spacing:2px;text-transform:uppercase">Ver en Instagram</a></blockquote><p style="margin: 0; font-size: 15px; color: #CFCFCB"><b style="color: #FAFAF8">Rocaviva</b> · Marca de ropa</p></div>
+<div class="reel"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Db_hQqXPAgW/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:8px; margin:0; max-width:400px; min-width:300px; width:100%; padding:0"><a href="https://www.instagram.com/p/Db_hQqXPAgW/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;aspect-ratio:9/16;background:#1D1D1D;color:#A8A8A2;text-decoration:none;font-size:13px;letter-spacing:2px;text-transform:uppercase">Ver en Instagram</a></blockquote><p style="margin: 0; font-size: 15px; color: #CFCFCB"><b style="color: #FAFAF8">Villa Bonita</b> · Restaurante</p></div>
+<div class="reel"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DZyipAkINl3/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:8px; margin:0; max-width:400px; min-width:300px; width:100%; padding:0"><a href="https://www.instagram.com/p/DZyipAkINl3/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;aspect-ratio:9/16;background:#1D1D1D;color:#A8A8A2;text-decoration:none;font-size:13px;letter-spacing:2px;text-transform:uppercase">Ver en Instagram</a></blockquote><p style="margin: 0; font-size: 15px; color: #CFCFCB"><b style="color: #FAFAF8">Sofía Loarca</b> · Marca personal</p></div>
 </div>
 </div>
 </section>
@@ -278,5 +281,6 @@ hh();window.addEventListener('resize',hh);
 render();
 })();
 </script>
+<script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
