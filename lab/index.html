@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Level Lab · Cursos para emprendedores con Sofía Loarca</title>
+<meta name="description" content="Aprende a organizar tu negocio, a liderar y a crecer. Cursos y talleres para emprendedores y dueños de negocio con Sofía Loarca.">
+<meta property="og:title" content="Level Lab · Sofía Loarca">
+<meta property="og:description" content="Aprende a organizar tu negocio, a liderar y a crecer.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&display=swap">
+<style>
+/* Layout: cuaderno de laboratorio — bandas blancas y negras alternadas, columna de lectura estrecha, etiquetas numeradas solo donde hay secuencia */
+:root{
+  --paper:#FAFAF8; --paper-2:#F1F0EC; --ink:#111111; --ink-2:#444444; --mute:#6A6A66; --line:#DEDDD8;
+  --night:#111111; --night-2:#1C1C1B; --night-line:#333331; --night-text:#D6D6D0; --night-mute:#9A9A95;
+  --sans:'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  --serif:'Fraunces', Georgia, 'Times New Roman', serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+.narrow{max-width:760px}
+.band-dark{background:var(--night);color:var(--paper)}
+.band-soft{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+section{padding-block:104px}
+.eyebrow{margin:0;font-size:13px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--mute)}
+.band-dark .eyebrow{color:var(--night-mute)}
+h1,h2,h3{margin:0;font-weight:300;text-wrap:balance}
+h1{font-size:clamp(42px,6.6vw,82px);line-height:1.04;letter-spacing:-2px}
+h2{font-size:clamp(30px,4.4vw,50px);line-height:1.12;letter-spacing:-1px}
+h3{font-size:22px;font-weight:500;letter-spacing:-.2px}
+em.s{font-family:var(--serif);font-style:italic;font-weight:300;letter-spacing:-.5px}
+p{margin:0}
+.lead{font-size:19px;line-height:1.65;color:var(--ink-2);max-width:640px}
+.band-dark .lead{color:var(--night-text)}
+.body{font-size:17px;line-height:1.75;color:var(--ink-2)}
+.band-dark .body{color:var(--night-text)}
+.stack{display:flex;flex-direction:column}
+.g8{gap:8px}.g12{gap:12px}.g16{gap:16px}.g20{gap:20px}.g28{gap:28px}.g40{gap:40px}.g56{gap:56px}
+.row{display:flex;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:999px;font-size:16px;font-weight:500;text-decoration:none;border:1px solid var(--ink);transition:background .2s,color .2s}
+.btn-dark{background:var(--ink);color:var(--paper)}
+.btn-dark:hover{background:#333333}
+.btn-line{color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:var(--paper)}
+.band-dark .btn-light{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.band-dark .btn-light:hover{background:#E4E4E0}
+.btn-soon{background:transparent;color:var(--mute);border:1px dashed #B5B5B0;cursor:default;gap:10px}
+.band-dark .btn-soon{color:var(--night-mute);border-color:#5A5A57}
+.chip{display:inline-flex;align-items:center;min-height:28px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;background:var(--ink);color:var(--paper)}
+a:focus-visible,summary:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+
+/* header */
+header{border-bottom:1px solid var(--line);background:var(--paper)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:18px}
+.logo{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.logo b{font-size:20px;font-weight:300;letter-spacing:6px}
+.logo span{font-size:12px;font-weight:700;letter-spacing:4px;color:var(--mute)}
+nav{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+nav a{font-size:15px;text-decoration:none;color:var(--ink-2)}
+nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{padding-block:88px 96px}
+.hero .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:56px}
+.hero-text{flex:999 1 520px;min-width:0}
+.hero-photo{flex:1 1 300px;max-width:420px;margin-inline:auto}
+.hero-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;border-radius:4px}
+.hero-photo p{margin-top:12px;font-size:14px;color:var(--mute)}
+
+/* cursos */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{background:var(--paper);border:1px solid var(--line);padding:32px;display:flex;flex-direction:column;gap:14px}
+.card .chip{align-self:flex-start;background:var(--paper-2);color:var(--ink-2)}
+.formats{display:flex;flex-wrap:wrap;gap:16px}
+.format{flex:1 1 260px;border-top:1px solid var(--ink);padding-top:20px;display:flex;flex-direction:column;gap:8px}
+.format b{font-size:19px;font-weight:500}
+.format span{font-size:16px;line-height:1.6;color:var(--ink-2)}
+
+/* etapas */
+.stages{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;counter-reset:st}
+.stage{border-top:1px solid var(--ink);padding-top:22px;display:flex;flex-direction:column;gap:10px}
+.stage .n{font-family:var(--serif);font-style:italic;font-size:30px;font-weight:300;color:var(--mute)}
+
+/* frase */
+.quote{padding-block:120px;text-align:center}
+.quote h2{font-size:clamp(34px,5.6vw,68px);max-width:900px;margin:0 auto;line-height:1.08}
+
+/* sobre mi */
+.about{display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start}
+.about-text{flex:3 1 460px;min-width:0}
+.about-side{flex:2 1 300px;min-width:0;display:flex;flex-direction:column;gap:14px}
+.timeline{display:flex;flex-direction:column;border-left:1px solid var(--ink);padding-left:22px;gap:26px}
+.timeline div{position:relative;display:flex;flex-direction:column;gap:4px}
+.timeline div::before{content:"";position:absolute;left:-27px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--ink)}
+.timeline b{font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+.timeline span{font-size:16px;line-height:1.55;color:var(--ink-2)}
+.schools{display:flex;flex-wrap:wrap;gap:10px}
+.schools span{border:1px solid var(--line);padding:10px 16px;font-size:15px;font-weight:500;border-radius:999px;background:var(--paper)}
+
+/* crecimiento */
+.years{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--night-line);border-bottom:1px solid var(--night-line)}
+.year{padding:28px 20px 28px 0;display:flex;flex-direction:column;gap:8px}
+.year+.year{border-left:1px solid var(--night-line);padding-left:20px}
+.year small{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--night-mute)}
+.year strong{font-family:var(--serif);font-weight:300;font-size:clamp(30px,5vw,56px);line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-1px}
+.year em{font-style:normal;font-size:14px;color:var(--night-mute)}
+.chart-box{display:flex;flex-wrap:wrap;gap:40px;align-items:center}
+.chart-box figure{flex:3 1 420px;min-width:0;margin:0;background:#FFFFFF;padding:16px;border-radius:4px}
+.chart-box figure img{width:100%;filter:grayscale(1) contrast(1.05)}
+.chart-box .stack{flex:2 1 280px;min-width:0}
+@media (max-width:560px){.years{grid-template-columns:1fr}.year+.year{border-left:0;border-top:1px solid var(--night-line);padding-left:0}}
+
+/* sistema */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.shots figure{margin:0;display:flex;flex-direction:column;gap:10px}
+.shots img{width:100%;border:1px solid var(--line);border-radius:6px;background:#fff}
+.shots figcaption{font-size:14px;color:var(--mute)}
+.saves{display:flex;flex-wrap:wrap;gap:12px}
+.saves span{background:var(--paper);border:1px solid var(--line);padding:10px 16px;border-radius:999px;font-size:15px}
+
+/* bts */
+.bts{display:flex;flex-wrap:wrap;gap:56px;align-items:center}
+.bts-embed{flex:0 1 380px;min-width:300px;max-width:100%;margin-inline:auto}
+.bts-text{flex:1 1 380px;min-width:0}
+
+/* filosofia */
+.profiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--night-line);border:1px solid var(--night-line)}
+.profiles div{background:var(--night);padding:28px;display:flex;flex-direction:column;gap:8px}
+.profiles b{font-size:18px;font-weight:500}
+.profiles span{font-size:15px;line-height:1.6;color:var(--night-mute)}
+
+/* temas */
+.topics{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.topic{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:24px 48px;padding-block:36px;border-bottom:1px solid var(--line)}
+.topic .t{display:flex;flex-direction:column;gap:10px}
+.topic .t small{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--mute)}
+.topic h3{font-size:26px;font-weight:300;letter-spacing:-.5px}
+@media (max-width:720px){.topic{grid-template-columns:1fr}}
+
+/* para quien */
+.who{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.who div{border:1px solid var(--line);background:var(--paper);padding:32px;display:flex;flex-direction:column;gap:12px}
+
+/* cierre */
+.close{text-align:center}
+.close .wrap{display:flex;flex-direction:column;align-items:center;gap:26px}
+footer{border-top:1px solid var(--night-line);background:var(--night);color:var(--night-mute)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-block:30px;font-size:14px}
+footer a{color:var(--paper)}
+@media (max-width:600px){section{padding-block:80px}.hero{padding-block:56px 72px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="wrap">
+<a class="logo" href="#inicio"><b>LEVEL</b><span>LAB</span></a>
+<nav>
+<a href="#cursos">Cursos</a>
+<a href="#sofia">Quién soy</a>
+<a href="#temas">Qué aprendes</a>
+<a class="btn btn-dark" style="min-height:44px;padding:0 22px;font-size:15px" href="https://wa.me/524423111966?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20Level%20Lab%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n">Escríbenos</a>
+</nav>
+</div>
+</header>
+
+<section id="inicio" class="hero">
+<div class="wrap">
+<div class="hero-text stack g28">
+<p class="eyebrow">Level Lab</p>
+<h1>Aprende a organizar tu negocio, a liderar y <em class="s">a crecer.</em></h1>
+<p class="lead">Cursos y talleres para emprendedores y dueños de negocio que quieren avanzar con un plan, no a prueba y error.</p>
+<div class="row g12" style="padding-top:8px">
+<a class="btn btn-dark" href="#cursos">Ver nuestros cursos</a>
+<a class="btn btn-line" href="https://wa.me/524423111966?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20Level%20Lab%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n">Escríbenos</a>
+</div>
+</div>
+<div class="hero-photo">
+<img src="img/sofia.jpg" alt="Sofía Loarca hablando con micrófono en un taller" width="900" height="1350">
+<p>Sofía Loarca · Fundadora de Grupo Level</p>
+</div>
+</div>
+</section>
+
+<section id="cursos" class="band-soft">
+<div class="wrap stack g40">
+<div class="stack g16">
+<p class="eyebrow">Nuestros cursos</p>
+<h2>Aprende en vivo o a tu ritmo</h2>
+<p class="lead">Cada curso lo damos primero en vivo, para resolver tus dudas en el momento. Después queda grabado para que lo tomes cuando quieras y las veces que lo necesites.</p>
+</div>
+<div class="formats">
+<div class="format"><b>En vivo</b><span>Sesiones con preguntas, ejemplos reales y retroalimentación sobre tu negocio.</span></div>
+<div class="format"><b>Grabado</b><span>Si no llegaste al vivo, lo compras y lo ves a tu ritmo, desde la etapa en la que estés.</span></div>
+</div>
+<div class="cards">
+<div class="card"><span class="chip">Próximamente</span><h3>Las tres mentalidades del emprendedor</h3><p class="body" style="font-size:16px">Emprendedor, técnico y directivo: cuál te domina y cuándo usar cada una.</p></div>
+<div class="card"><span class="chip">Próximamente</span><h3>Tu brújula financiera</h3><p class="body" style="font-size:16px">Mide cuánto ganas, cuánto gastas y cuál es tu utilidad cada mes, y hazlo hábito.</p></div>
+<div class="card"><span class="chip">Próximamente</span><h3>Delegar con dirección</h3><p class="body" style="font-size:16px">Qué soltar primero, cómo sistematizarlo y cómo pasar a dirigir tu negocio.</p></div>
+</div>
+<span class="btn btn-soon" style="align-self:flex-start" aria-disabled="true">Ver nuestros cursos · Próximamente</span>
+</div>
+</section>
+
+<section>
+<div class="wrap stack g40">
+<div class="stack g16">
+<p class="eyebrow">Lo que hacemos</p>
+<h2>Los atajos que nadie te cuenta</h2>
+<p class="lead">Todo dueño de negocio pasó por retos que lo llevaron a donde está hoy. Aquí te compartimos lo que aprendimos en el camino, para que avances, escales y tengas una empresa organizada que, paso a paso, deje de depender de ti.</p>
+<p class="lead">Pero antes de salir de la operación, primero hay que construir. Por eso te acompañamos en la etapa en la que estés.</p>
+</div>
+<div class="stages">
+<div class="stage"><span class="n">i.</span><h3>Empezar</h3><p class="body" style="font-size:16px">Poner tu negocio en marcha con bases claras.</p></div>
+<div class="stage"><span class="n">ii.</span><h3>Ordenar</h3><p class="body" style="font-size:16px">Definir tu proceso, tus números y tu forma de vender.</p></div>
+<div class="stage"><span class="n">iii.</span><h3>Delegar</h3><p class="body" style="font-size:16px">Sistematizar la operación y soltarla parte por parte.</p></div>
+</div>
+</div>
+</section>
+
+<section class="band-dark quote">
+<div class="wrap">
+<h2>Emprender con una guía <em class="s">te puede cambiar la vida.</em></h2>
+</div>
+</section>
+
+<section id="sofia">
+<div class="wrap about">
+<div class="about-text stack g20">
+<p class="eyebrow">Quién soy</p>
+<h2>Soy Sofía Loarca</h2>
+<p class="body">Mi camino como emprendedora empezó hace 10 años. Al principio vendía y revendía productos casi como un hobby, pero siempre me lo tomé en serio. Desde entonces ya tomaba cursos de marketing, redes sociales e historias para que lo que vendía pudiera crecer.</p>
+<p class="body">Hace 6 años formalicé mi primer negocio, con la fotografía. Y todo cambió el día que decidí invertir en serio en mi conocimiento, en un curso que en ese momento se me hacía caro, pero que sabía que me iba a ayudar.</p>
+<p class="body">Me formé en Red Eye Academy, la escuela de filmmaking más reconocida de Latinoamérica, y en Disruptive Mentors, una comunidad de mentores para empresarios en Querétaro. También he tomado muchos otros cursos y he aprendido de distintos empresarios y mentores en el camino. Gracias a eso dejé de adivinar por dónde sí y por dónde no, y empecé a trabajar con un plan de acción: misión, visión, proceso operativo, finanzas medidas mes con mes, ventas y productividad.</p>
+<div class="schools" style="padding-top:8px"><span>Red Eye Academy</span><span>Disruptive Mentors</span><span>Mentores empresariales</span></div>
+</div>
+<div class="about-side">
+<div class="timeline">
+<div><b>Hace 10 años</b><span>Vendo y revendo productos. Empiezo a tomar cursos de marketing y redes.</span></div>
+<div><b>Hace 6 años</b><span>Formalizo mi primer negocio con la fotografía.</span></div>
+<div><b>2025</b><span>Me tomo en serio la inversión en conocimiento y el negocio despega.</span></div>
+<div><b>Hoy</b><span>Grupo Level: Level Producer, Level.Os y Level Lab.</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band-dark">
+<div class="wrap stack g56">
+<div class="stack g16">
+<p class="eyebrow">Crecimiento</p>
+<h2>En tres años, mi empresa <em class="s">triplicó sus ingresos</em></h2>
+</div>
+<div class="years">
+<div class="year"><small>Año 1</small><strong>$22,000</strong><em>USD</em></div>
+<div class="year"><small>Año 2</small><strong>$44,000</strong><em>USD · +100%</em></div>
+<div class="year"><small>Año 3</small><strong>$66,000</strong><em>USD · +50%</em></div>
+</div>
+<div class="chart-box">
+<figure><img src="img/grafica-2025.png" alt="Gráfica de ingresos mensuales de enero a agosto de 2025, con tendencia de crecimiento constante" width="710" height="462" loading="lazy"></figure>
+<div class="stack g16">
+<p class="eyebrow">2025</p>
+<h3 style="font-size:28px;font-weight:300">El año en que me tomé en serio la inversión en conocimiento</h3>
+<p class="body">Ingresos mes con mes, de enero a agosto. Cuando empecé a medir mis números y a trabajar con un plan, el crecimiento dejó de ser suerte.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band-soft">
+<div class="wrap stack g40">
+<div class="stack g16">
+<p class="eyebrow">El sistema</p>
+<h2>Lo que me cambió la vida</h2>
+<p class="lead">Mi sistema operativo me ahorra horas cada semana en propuestas, cotizaciones y agenda de ediciones. Es lo que más me ha ayudado a delegar con dirección, porque mi equipo sabe qué sigue sin que yo tenga que estar en todo.</p>
+</div>
+<div class="saves"><span>Propuestas</span><span>Cotizaciones</span><span>Agenda de ediciones</span><span>Delegar con dirección</span></div>
+<div class="shots">
+<figure><img src="img/level-cotizaciones.webp" alt="Sistema de cotizaciones de Level Producer" width="700" height="774" loading="lazy"><figcaption>Cotizaciones y propuestas</figcaption></figure>
+<figure><img src="img/level-edicion.webp" alt="Tablero de ediciones de Level Producer" width="760" height="698" loading="lazy"><figcaption>Agenda y seguimiento de ediciones</figcaption></figure>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap bts">
+<div class="bts-text stack g16">
+<p class="eyebrow">Detrás de cámaras</p>
+<h2>Así ha crecido el negocio</h2>
+<p class="body">Hoy tenemos la infraestructura y el equipo para hacer videos con cada vez más producción. Este BTS de Califest es una muestra de hasta dónde puede llegar un negocio cuando tiene orden detrás.</p>
+</div>
+<div class="bts-embed">
+<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DbGgzb0xFXu/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:8px;margin:0;max-width:400px;min-width:300px;width:100%;padding:0"><a href="https://www.instagram.com/p/DbGgzb0xFXu/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;aspect-ratio:9/16;background:#1C1C1B;color:#9A9A95;text-decoration:none;font-size:13px;letter-spacing:2px;text-transform:uppercase">Ver en Instagram</a></blockquote>
+</div>
+</div>
+</section>
+
+<section class="band-soft">
+<div class="wrap narrow stack g20">
+<p class="eyebrow">Por qué nace Level Lab</p>
+<h2>Más de 10 personas al mes me preguntaban cómo lo hice</h2>
+<p class="body">Siempre he compartido mi camino en mi marca personal. Con el tiempo, cada mes más de 10 personas empezaron a escribirme para preguntarme cómo crecí y si podía ayudarles.</p>
+<p class="body">Ahí vi que muchas personas necesitan una guía. Unas están empezando. Otras ya emprenden, pero no saben cómo sistematizar su negocio ni salir de la operación, porque todavía no tienen claro su propio proceso.</p>
+<p class="body" style="font-size:20px;color:var(--ink)">Level Lab existe para que no lo hagas con los ojos vendados, sino con una brújula.</p>
+</div>
+</section>
+
+<section class="band-dark">
+<div class="wrap stack g40">
+<div class="stack g16">
+<p class="eyebrow">Mi filosofía</p>
+<h2>Un carril no es el mismo <em class="s">para todos</em></h2>
+<p class="lead">Más allá del crecimiento, lo que más me importa es que te conozcas. No es lo mismo dirigir un negocio desde la lógica que desde la emoción, y ninguna de las dos está mal.</p>
+<p class="lead">No quiero que quienes toman mis cursos quieran ser como yo. Quiero que entiendan cómo operan ellos, de forma humana y honesta, para que dejen de exigirse ser alguien más y tomen decisiones desde donde sí les funciona.</p>
+</div>
+<div class="profiles">
+<div><b>Si eres más lógico y aventado</b><span>Avanzas rápido. Te ayudamos a que esa velocidad tenga dirección.</span></div>
+<div><b>Si eres más emocional</b><span>Aprendes a reconocer qué necesitas antes de decidir, sin forzarte a ser alguien que no eres.</span></div>
+<div><b>Si necesitas estructura antes de empezar</b><span>Está bien. Armamos esa estructura primero para que arranques con seguridad.</span></div>
+<div><b>Si te toma más tiempo</b><span>Cada quien tiene su ritmo. Lo importante es saber desde dónde actuar en cada etapa.</span></div>
+</div>
+</div>
+</section>
+
+<section id="temas">
+<div class="wrap stack g40">
+<div class="stack g16">
+<p class="eyebrow">Qué vas a aprender</p>
+<h2>Lo que vemos en Level Lab</h2>
+</div>
+<div class="topics">
+<div class="topic"><div class="t"><small>Mentalidad</small><h3>Las tres mentalidades del emprendedor</h3></div><p class="body">El emprendedor, el técnico y el directivo. Vas a identificar en cuál estás, cuál te domina y cómo usar cada una en el momento correcto.</p></div>
+<div class="topic"><div class="t"><small>Finanzas</small><h3>Tu brújula financiera</h3></div><p class="body">No necesitas dominar las finanzas al 100% para empezar a medirlas. Cuando sabes cuánto ganas, cuánto gastas y cuál es tu utilidad cada mes, crecer se vuelve mucho más fácil. Medir tus finanzas se vuelve un hábito.</p></div>
+<div class="topic"><div class="t"><small>Sistemas y dirección</small><h3>Delegar sin perder dinero</h3></div><p class="body">Si tu negocio ya te rebasó, necesitas delegar, pero delegar lo que todavía no toca cuesta caro. Te ayudamos a saber exactamente qué soltar primero, y de ahí pasamos a sistemas operativos y dirección.</p></div>
+</div>
+</div>
+</section>
+
+<section class="band-soft">
+<div class="wrap stack g40">
+<div class="stack g16">
+<p class="eyebrow">Para quién</p>
+<h2>Para quien está construyendo su negocio</h2>
+</div>
+<div class="who">
+<div><h3>Productores y creativos audiovisuales</h3><p class="body" style="font-size:16px">Es el mundo del que venimos, y los talleres hablan su idioma.</p></div>
+<div><h3>Emprendedores y dueños de negocio</h3><p class="body" style="font-size:16px">Lo que enseñamos es cómo se construye un negocio día a día, sea cual sea tu industria.</p></div>
+</div>
+</div>
+</section>
+
+<section class="band-dark close">
+<div class="wrap narrow">
+<p class="eyebrow">Level Lab</p>
+<h2>Empieza hoy, <em class="s">a tu ritmo</em></h2>
+<p class="lead" style="margin-inline:auto">Nuestros cursos quedan grabados. Aunque no hayas estado en el vivo, puedes tomarlos cuando quieras y avanzar desde la etapa en la que estás.</p>
+<span class="btn btn-soon" aria-disabled="true">Ver nuestros cursos · Próximamente</span>
+<p style="font-size:15px;color:var(--night-mute)">¿Dudas sobre cuál te conviene? <a href="https://wa.me/524423111966?text=Hola%2C%20quiero%20saber%20qu%C3%A9%20curso%20de%20Level%20Lab%20me%20conviene" style="color:var(--paper)">Escríbenos por WhatsApp</a></p>
+</div>
+</section>
+
+<footer>
+<div class="wrap">
+<span style="display:flex;align-items:baseline;gap:8px"><span style="font-size:16px;font-weight:300;letter-spacing:5px;color:var(--paper)">LEVEL</span><span style="font-size:11px;font-weight:700;letter-spacing:3px">LAB</span></span>
+<p>Parte de Grupo Level · <a href="https://wa.me/524423111966">442 311 1966</a></p>
+</div>
+</footer>
+
+<script async src="https://www.instagram.com/embed.js"></script>
+</body>
+</html>
