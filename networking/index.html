@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Invitados Cierre de Año</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+/* Layout: lista de invitados en filas que se apilan como tarjetas en celular; resumen arriba, filtros pegados al inicio de la lista */
+:root{
+  --bg:#FAFAF8; --surface:#FFFFFF; --ink:#141413; --muted:#6A6862; --line:#E4E2DC;
+  --red:#A3202A; --gold:#B08A3E; --ok:#2E6B3F; --ok-bg:#E7F1E9; --warn-bg:#F6EEDC; --no-bg:#F4E4E4; --chip:#F1F0EC;
+  --display:'Cormorant Garamond', Georgia, serif;
+  --body:'Manrope', system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121211; --surface:#1B1B1A; --ink:#F2F0EA; --muted:#A3A09A; --line:#2E2D2A;
+  --red:#E0626B; --gold:#D4B06A; --ok:#7CC48F; --ok-bg:#1E2E22; --warn-bg:#2E2818; --no-bg:#331E1F; --chip:#242422; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121211; --surface:#1B1B1A; --ink:#F2F0EA; --muted:#A3A09A; --line:#2E2D2A;
+  --red:#E0626B; --gold:#D4B06A; --ok:#7CC48F; --ok-bg:#1E2E22; --warn-bg:#2E2818; --no-bg:#331E1F; --chip:#242422; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:1100px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));display:flex;flex-direction:column;gap:28px}
+header{display:flex;flex-direction:column;gap:6px;border-bottom:1px solid var(--line);padding-bottom:22px}
+.eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:2px;background:linear-gradient(90deg,var(--red),var(--gold))}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(34px,6vw,52px);line-height:1.05;margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:0}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.stat b{font-size:30px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.1}
+.stat span{font-size:13px;color:var(--muted)}
+.stat small{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.stat.key{border-color:var(--gold)}
+.stat.key b{color:var(--red)}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;position:sticky;top:env(safe-area-inset-top, 0px);background:var(--bg);padding-block:10px;z-index:5;border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--bg)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
+.seg button{border:0;background:none;padding:8px 14px;font:inherit;font-size:14px;color:var(--muted);cursor:pointer;min-height:38px}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-height:38px}
+input:focus-visible,select:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+#q{flex:1 1 200px;min-width:0}
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:999px;padding:8px 16px;font:inherit;font-size:14px;font-weight:600;cursor:pointer;min-height:38px}
+.btn.ghost{background:none;color:var(--ink)}
+.count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.list{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.row{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1fr) 150px 110px 90px 36px;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row.head{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);background:var(--chip);padding-block:9px}
+.who{display:flex;flex-direction:column;gap:2px;min-width:0}
+.who strong{font-weight:600;overflow-wrap:anywhere}
+.who em{font-style:normal;font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;padding:2px 8px;border-radius:999px;background:var(--chip);color:var(--muted);white-space:nowrap}
+.chip.sofia{color:var(--red)}
+.chip.xitlali{color:var(--gold)}
+select.st{width:100%;font-size:14px;font-weight:600}
+select.st[data-v="por_invitar"]{background:var(--surface)}
+select.st[data-v="invitado"]{background:var(--warn-bg)}
+select.st[data-v="confirmado"]{background:var(--ok-bg);color:var(--ok);border-color:transparent}
+select.st[data-v="no_va"]{background:var(--no-bg);color:var(--red);border-color:transparent}
+.tick{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
+.tick input{min-height:0;width:18px;height:18px;accent-color:var(--red)}
+.tick.off{opacity:.35}
+.more{border:0;background:none;color:var(--muted);font-size:20px;cursor:pointer;width:36px;height:36px;border-radius:8px}
+.more:hover{background:var(--chip)}
+.detail{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;padding-top:4px}
+.detail label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted)}
+.detail .wide{grid-column:1/-1}
+.detail .del{justify-self:start;border:0;background:none;color:var(--red);font:inherit;font-size:13px;cursor:pointer;padding:6px 0}
+.empty{padding:28px 16px;color:var(--muted);text-align:center}
+.notice{background:var(--warn-bg);border-radius:10px;padding:12px 14px;font-size:14px}
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);padding:22px;width:min(520px,calc(100vw - 32px))}
+dialog::backdrop{background:rgba(0,0,0,.35)}
+dialog form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+dialog label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted)}
+dialog .wide{grid-column:1/-1}
+dialog h2{grid-column:1/-1;margin:0;font-family:var(--display);font-size:28px}
+dialog .acts{grid-column:1/-1;display:flex;gap:10px;justify-content:flex-end}
+@media (max-width:760px){
+  .row.head{display:none}
+  .row{grid-template-columns:minmax(0,1fr) 36px;gap:8px 10px}
+  .row .who{grid-column:1}
+  .row .more{grid-column:2;grid-row:1}
+  .row .chips,.row .stcell,.row .plus,.row .asis{grid-column:1/-1}
+  .row .stcell{order:3} .row .plus{order:4} .row .asis{order:5}
+  .rowtail{display:flex;gap:16px;flex-wrap:wrap}
+  dialog form{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Jueves 3 de diciembre · Jugo, Querétaro</div>
+    <h1>Invitados del cierre de año</h1>
+    <p class="sub">Sofía Loarca y Xitlali Pastén · networking</p>
+  </header>
+
+  <section class="stats" aria-label="Resumen">
+    <div class="stat"><b id="s-total">—</b><span>en la lista</span><small id="s-total-x"></small></div>
+    <div class="stat"><b id="s-inv">—</b><span>invitación enviada</span><small id="s-inv-x"></small></div>
+    <div class="stat key"><b id="s-conf">—</b><span>confirmaron</span><small id="s-conf-x"></small></div>
+    <div class="stat key"><b id="s-pers">—</b><span>personas esperadas</span><small id="s-pers-x"></small></div>
+    <div class="stat"><b id="s-asis">—</b><span>asistieron</span><small>el día del evento</small></div>
+  </section>
+
+  <div id="notice" class="notice" hidden></div>
+
+  <section style="display:flex;flex-direction:column;gap:0">
+    <div class="tools">
+      <div class="seg" role="group" aria-label="Quién invita">
+        <button type="button" data-f="todas" aria-pressed="true">Todas</button>
+        <button type="button" data-f="Sofía" aria-pressed="false">Sofía</button>
+        <button type="button" data-f="Xitlali" aria-pressed="false">Xitlali</button>
+      </div>
+      <label for="fst" style="position:absolute;left:-9999px">Estatus</label>
+      <select id="fst">
+        <option value="">Todos los estatus</option>
+        <option value="por_invitar">Por invitar</option>
+        <option value="invitado">Invitado</option>
+        <option value="confirmado">Confirmó</option>
+        <option value="no_va">No va</option>
+      </select>
+      <label for="q" style="position:absolute;left:-9999px">Buscar</label>
+      <input id="q" type="search" placeholder="Buscar por nombre o a qué se dedica">
+      <button class="btn" type="button" id="add">Agregar invitado</button>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="list" id="list" style="margin-top:12px">
+      <div class="empty">Cargando la lista de invitados…</div>
+    </div>
+  </section>
+</div>
+
+<dialog id="dlg">
+  <form id="addform">
+    <h2>Nuevo invitado</h2>
+    <label class="wide">Nombre<input id="a-nombre" required></label>
+    <label>Lo invita<select id="a-fuente"><option>Sofía</option><option>Xitlali</option></select></label>
+    <label>Tipo de contacto<select id="a-tipo"><option>Cliente</option><option>Alianza</option><option>Prospecto</option><option>Proveedor</option><option>Amigo</option></select></label>
+    <label class="wide">A qué se dedica<input id="a-dedica"></label>
+    <label>Edad<input id="a-edad" type="number" min="0" max="120" inputmode="numeric"></label>
+    <label>Puede llevar +1<select id="a-plus"><option value="si">Sí</option><option value="no">No</option></select></label>
+    <label class="wide">WhatsApp<input id="a-wa" inputmode="tel"></label>
+    <div class="acts"><button type="button" class="btn ghost" id="a-cancel">Cancelar</button><button class="btn" type="submit">Agregar</button></div>
+  </form>
+</dialog>
+
+<script>
+const ST = {por_invitar:"Por invitar", invitado:"Invitado", confirmado:"Confirmó", no_va:"No va"};
+const FN="https://jqjlxtnvjokdlhtmjnne.supabase.co/functions/v1/networking"; const K=new URLSearchParams(location.search).get("k")||""; let canWrite=true, rows=[], filtro={fuente:"todas", st:"", q:""}, open=new Set();
+const $=s=>document.querySelector(s);
+const norm=s=>(s||"").toString().normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+
+function say(msg){const n=$("#notice"); n.textContent=msg; n.hidden=!msg;}
+
+function stats(){
+  const by=f=>rows.filter(r=>r.fuente===f);
+  const s=(list)=>{
+    const inv=list.filter(r=>r.estatus==="invitado"||r.estatus==="confirmado"||r.estatus==="no_va").length;
+    const conf=list.filter(r=>r.estatus==="confirmado");
+    const pers=conf.length+conf.filter(r=>r.ofrece1&&r.llevaMas1).length;
+    return {total:list.length,inv,conf:conf.length,pers,asis:list.filter(r=>r.asistio).length};
+  };
+  const a=s(rows), so=s(by("Sofía")), xi=s(by("Xitlali"));
+  const set=(id,v)=>{$(id).textContent=v};
+  set("#s-total",a.total); set("#s-total-x",`Sofía ${so.total} · Xitlali ${xi.total}`);
+  set("#s-inv",a.inv); set("#s-inv-x",`Sofía ${so.inv} · Xitlali ${xi.inv}`);
+  set("#s-conf",a.conf); set("#s-conf-x",`Sofía ${so.conf} · Xitlali ${xi.conf}`);
+  set("#s-pers",a.pers); set("#s-pers-x","confirmados + acompañantes");
+  set("#s-asis",a.asis);
+}
+
+function visible(){
+  const q=norm(filtro.q);
+  return rows.filter(r=>(filtro.fuente==="todas"||r.fuente===filtro.fuente)
+    &&(!filtro.st||r.estatus===filtro.st)
+    &&(!q||norm(r.nombre+" "+r.dedica+" "+r.tipo).includes(q)))
+    .sort((a,b)=>(a.fuente===b.fuente?0:a.fuente==="Sofía"?-1:1)||norm(a.nombre).localeCompare(norm(b.nombre)));
+}
+
+async function api(body){
+  const r=await fetch(FN,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.assign({k:K},body))});
+  const d=await r.json().catch(()=>({ok:false,error:"Respuesta inválida."}));
+  if(!r.ok||!d.ok) throw new Error(d.error||"No se pudo conectar.");
+  return d;
+}
+const map=r=>({...r,llevaMas1:r.lleva_mas1});
+async function save(id,patch){
+  const p={...patch}; if("llevaMas1" in p){p.lleva_mas1=p.llevaMas1; delete p.llevaMas1;}
+  const i=rows.findIndex(r=>r.id===id); if(i>=0){rows[i]={...rows[i],...patch}; stats();}
+  try{ const d=await api({accion:"actualizar",id,cambios:p}); if(i>=0) rows[i]=map(d.invitado); say(""); }
+  catch(e){ say("No se pudo guardar el cambio. Revisa tu conexión e inténtalo otra vez."); }
+  if("ofrece1" in patch||"nombre" in patch||"fuente" in patch||"tipo" in patch||"dedica" in patch||"edad" in patch) render(); else stats();
+}
+async function cargar(){
+  try{ const d=await api({accion:"listar"}); rows=d.invitados.map(map); if(!document.activeElement||!document.activeElement.closest("#list,#dlg")) render(); else stats(); }
+  catch(e){ if(!rows.length) $("#list").replaceChildren(el("div",{class:"empty",text:e.message==="Link inválido."?"Este link no es válido. Pídele a Sofía el link de la lista.":"No se pudo cargar la lista. Revisa tu conexión y recarga."})); }
+}
+
+function el(tag,attrs={},kids=[]){const n=document.createElement(tag);for(const[k,v]of Object.entries(attrs)){if(k==="text")n.textContent=v;else if(k.startsWith("on"))n.addEventListener(k.slice(2),v);else if(v!==false&&v!=null)n.setAttribute(k,v===true?"":v)}for(const c of[].concat(kids))if(c)n.append(c);return n}
+
+function render(){
+  stats();
+  const list=$("#list"), vis=visible();
+  $("#count").textContent=`${vis.length} de ${rows.length}`;
+  list.replaceChildren();
+  if(!rows.length){list.append(el("div",{class:"empty",text:"Todavía no hay invitados. Toca “Agregar invitado” para empezar la lista."}));return;}
+  list.append(el("div",{class:"row head"},[el("span",{text:"Invitado"}),el("span",{text:"Lo invita"}),el("span",{text:"Estatus"}),el("span",{text:"+1"}),el("span",{text:"Asistió"}),el("span")]));
+  if(!vis.length){list.append(el("div",{class:"empty",text:"Nadie coincide con estos filtros."}));return;}
+  for(const r of vis){
+    const dis=!canWrite;
+    const sel=el("select",{class:"st","data-v":r.estatus,"aria-label":"Estatus de "+r.nombre,disabled:dis,onchange:e=>{e.target.dataset.v=e.target.value;save(r.id,{estatus:e.target.value})}},
+      Object.entries(ST).map(([k,v])=>{const o=el("option",{value:k,text:v});if(k===r.estatus)o.selected=true;return o}));
+    const plus=el("label",{class:"tick plus"+(r.ofrece1?"":" off")},[
+      el("input",{type:"checkbox",checked:!!r.llevaMas1,disabled:dis||!r.ofrece1,onchange:e=>save(r.id,{llevaMas1:e.target.checked})}),
+      document.createTextNode(r.ofrece1?(r.llevaMas1?"Lleva +1":"Sin +1"):"No aplica")]);
+    const asis=el("label",{class:"tick asis"},[el("input",{type:"checkbox",checked:!!r.asistio,disabled:dis,onchange:e=>save(r.id,{asistio:e.target.checked})}),document.createTextNode("Asistió")]);
+    const row=el("div",{class:"row"},[
+      el("div",{class:"who"},[el("strong",{text:r.nombre}),el("em",{text:[r.dedica,r.edad?r.edad+" años":""].filter(Boolean).join(" · ")})]),
+      el("div",{class:"chips"},[el("span",{class:"chip "+(r.fuente==="Sofía"?"sofia":"xitlali"),text:r.fuente}),el("span",{class:"chip",text:r.tipo})]),
+      el("div",{class:"stcell"},[sel]), plus, asis,
+      el("button",{type:"button",class:"more","aria-expanded":open.has(r.id)?"true":"false","aria-label":"Más datos de "+r.nombre,text:open.has(r.id)?"–":"+",onclick:()=>{open.has(r.id)?open.delete(r.id):open.add(r.id);render()}})
+    ]);
+    if(open.has(r.id)) row.append(detail(r,dis));
+    list.append(row);
+  }
+}
+
+function field(r,key,label,dis,opts={}){
+  const inp=el(opts.area?"textarea":"input",{id:"f-"+key+"-"+r.id,value:opts.area?null:(r[key]??""),rows:opts.area?2:null,disabled:dis,inputmode:opts.mode||null});
+  if(opts.area) inp.value=r[key]||"";
+  inp.addEventListener("change",()=>{let v=inp.value.trim(); if(key==="edad") v=v?Number(v):null; if((r[key]??"")!==v) save(r.id,{[key]:v});});
+  return el("label",{class:opts.wide?"wide":null,for:inp.id},[document.createTextNode(label),inp]);
+}
+
+function detail(r,dis){
+  const d=el("div",{class:"detail"},[
+    field(r,"nombre","Nombre",dis), field(r,"dedica","A qué se dedica",dis), field(r,"whatsapp","WhatsApp",dis,{mode:"tel"}),
+    field(r,"edad","Edad",dis,{mode:"numeric"}),
+    el("label",{},[document.createTextNode("Lo invita"),el("select",{disabled:dis,onchange:e=>save(r.id,{fuente:e.target.value})},["Sofía","Xitlali"].map(v=>{const o=el("option",{text:v});if(v===r.fuente)o.selected=true;return o}))]),
+    el("label",{},[document.createTextNode("Tipo de contacto"),el("select",{disabled:dis,onchange:e=>save(r.id,{tipo:e.target.value})},["Cliente","Alianza","Prospecto","Proveedor","Amigo"].map(v=>{const o=el("option",{text:v});if(v===r.tipo)o.selected=true;return o}))]),
+    el("label",{},[document.createTextNode("Puede llevar +1"),el("select",{disabled:dis,onchange:e=>save(r.id,{ofrece1:e.target.value==="si"})},[["si","Sí"],["no","No"]].map(([k,v])=>{const o=el("option",{value:k,text:v});if((k==="si")===!!r.ofrece1)o.selected=true;return o}))]),
+    field(r,"notas","Notas (a quién quiere conocer, si llega tarde…)",dis,{area:true,wide:true}),
+  ]);
+  if(!dis){
+    const del=el("button",{type:"button",class:"del",text:"Quitar de la lista"});
+    del.addEventListener("click",async()=>{
+      if(del.dataset.armed){ try{await api({accion:"borrar",id:r.id}); open.delete(r.id); rows=rows.filter(x=>x.id!==r.id); render();}catch(e){say("No se pudo quitar. Inténtalo otra vez.");} }
+      else { del.dataset.armed="1"; del.textContent="Toca otra vez para confirmar"; setTimeout(()=>{if(del.isConnected){delete del.dataset.armed;del.textContent="Quitar de la lista"}},4000); }
+    });
+    d.append(el("div",{class:"wide"},[del]));
+  }
+  return d;
+}
+
+document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>{
+  filtro.fuente=b.dataset.f; document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false")); render();
+}));
+$("#fst").addEventListener("change",e=>{filtro.st=e.target.value;render()});
+let t; $("#q").addEventListener("input",e=>{clearTimeout(t);t=setTimeout(()=>{filtro.q=e.target.value;render()},150)});
+$("#add").addEventListener("click",()=>{ if(!canWrite){say("No tienes permiso para agregar invitados.");return;} $("#addform").reset(); $("#dlg").showModal(); $("#a-nombre").focus(); });
+$("#a-cancel").addEventListener("click",()=>$("#dlg").close());
+$("#addform").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const nombre=$("#a-nombre").value.trim(); if(!nombre) return;
+  const edad=$("#a-edad").value?Number($("#a-edad").value):null;
+  const data={nombre,fuente:$("#a-fuente").value,tipo:$("#a-tipo").value,dedica:$("#a-dedica").value.trim(),edad,ofrece1:$("#a-plus").value==="si",whatsapp:$("#a-wa").value.trim()};
+  try{ const d=await api({accion:"crear",invitado:data}); rows.push(map(d.invitado)); $("#dlg").close(); render(); }
+  catch(err){ say("No se pudo agregar. Revisa tu conexión e inténtalo otra vez."); }
+});
+
+if(!K){ $("#list").replaceChildren(el("div",{class:"empty",text:"Abre esta página con el link privado que te compartió Sofía."})); }
+else { cargar(); setInterval(()=>{ if(!document.hidden) cargar(); },15000); document.addEventListener("visibilitychange",()=>{ if(!document.hidden) cargar(); }); }
+</script>
+</body>
+</html>
